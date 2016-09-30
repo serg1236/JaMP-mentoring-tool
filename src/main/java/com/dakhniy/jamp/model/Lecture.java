@@ -3,6 +3,8 @@ package com.dakhniy.jamp.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 
 /**
@@ -10,11 +12,22 @@ import java.time.LocalDateTime;
  */
 @Data
 @NoArgsConstructor
+@Entity
 public class Lecture {
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
+    @Column(nullable = false)
     private String topic;
+    @Column(nullable = false)
     private int minutesDuration;
+    @Column(nullable = false)
     private LocalDateTime scheduledTime;
+    @ManyToOne
+    @Valid
     private Person lector;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    @Valid
     private ProgramPhase phase;
 }

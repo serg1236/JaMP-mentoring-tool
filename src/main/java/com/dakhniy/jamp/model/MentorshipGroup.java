@@ -1,10 +1,11 @@
 package com.dakhniy.jamp.model;
 
-import com.dakhniy.jamp.model.Person;
 import com.dakhniy.jamp.model.enumeration.GroupStatus;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import javax.validation.Valid;
 import java.util.Set;
 
 /**
@@ -12,10 +13,21 @@ import java.util.Set;
  */
 @Data
 @NoArgsConstructor
+@Entity
 public class MentorshipGroup {
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    @Valid
     private Person mentor;
+    @OneToMany
     private Set<Person> mentees;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private GroupStatus status;
+    @ManyToOne
     private ProgramPhase phase;
 }
