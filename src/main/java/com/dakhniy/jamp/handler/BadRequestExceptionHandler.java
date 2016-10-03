@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.RedirectView;
  * Created by Sergiy_Dakhniy on 9/29/2016.
  */
 @ControllerAdvice
-public class BadRequestExceptioHandler {
+public class BadRequestExceptionHandler {
 
     @ExceptionHandler({MethodArgumentNotValidException.class, HttpMessageConversionException.class, ItemExistsException.class})
     public ResponseEntity<String> validationErrorHandler(MethodArgumentNotValidException ex) {

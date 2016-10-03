@@ -1,5 +1,5 @@
 var app = angular.module('MentorApp');
-app.controller('mainCtrl', ['$scope','$http', 'rest', function($scope, $http, rest) {
+app.controller('programCtrl', ['$scope','$http', 'rest', function($scope, $http, rest) {
 
     var URL = '/programs';
     $scope.editMode = [];
@@ -28,16 +28,17 @@ app.controller('mainCtrl', ['$scope','$http', 'rest', function($scope, $http, re
     };
 
     $scope.updateProgram = function(editForm, item, index) {
+        $scope.editErrorMessages[index] = '';
         if(editForm.$valid) {
             rest.update(item, URL).then(function(data) {
                 item = data;
                 editForm.$setPristine();
                 Materialize.toast('Updated successfully!', 4000);
             }, function (response) {
-                $scope['errorMessage' + index] = 'Server error. Cannot handle request.';
+                 $scope.editErrorMessages[index] = 'Server error. Cannot handle request.';
             });
         } else {
-            $scope['errorMessage' + index] = 'Invalid data. Check your inputs';
+             $scope.editErrorMessages[index] = 'Invalid data. Check your inputs';
         }
     };
 

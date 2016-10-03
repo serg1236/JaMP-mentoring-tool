@@ -6,14 +6,15 @@
 <html>
 
 <head>
-    <c:import url="./partials/head.jsp"></c:import>
 </head>
 
 <body ng-app="MentorApp">
-    <div class="container" ng-controller="mainCtrl">
-        <ul class="collapsible popout" data-collapsible="accordion" watch>
+    <div class="container" ng-controller="programCtrl">
+        <c:import url="./partials/header.jsp"></c:import>
+        <h5>Programs</h5>
+        <ul class="collapsible" data-collapsible="accordion" watch>
             <li>
-                <div class="collapsible-header teal white-text">Add new mentorship program</div>
+                <div class="collapsible-header teal white-text active">Add new mentorship program</div>
                 <div class="collapsible-body">
                     <div class="container">
                         <ng-form name="newItemForm">
@@ -25,18 +26,22 @@
                                 <input type="text" ng-model="newItem.officeLocation" required>
                                 <label>Office location</label>
                             </div>
-                            <label for="startDate">Start date</label>
-                            <input input-date
-                                type="text"
-                                name="startDate"
-                                ng-model="newItem.startDate"
-                                format="<spring:eval expression='@environment.getProperty("jamp.pattern.date").toLowerCase()' />" required/>
-                            <label for="end">End date</label>
-                            <input input-date
-                                type="text"
-                                name="endDate"
-                                ng-model="newItem.endDate"
-                                format="<spring:eval expression='@environment.getProperty("jamp.pattern.date").toLowerCase()' />" required/>
+                            <div>
+                                <label for="startDate">Start date</label>
+                                <input input-date
+                                    type="text"
+                                    name="startDate"
+                                    ng-model="newItem.startDate"
+                                    format="<spring:eval expression='@environment.getProperty("jamp.pattern.date").toLowerCase()' />" required/>
+                            </div>
+                            <div>
+                                <label for="end">End date</label>
+                                <input input-date
+                                    type="text"
+                                    name="endDate"
+                                    ng-model="newItem.endDate"
+                                    format="<spring:eval expression='@environment.getProperty("jamp.pattern.date").toLowerCase()' />" required/>
+                            </div>
                             <div class="row">
                                 <div class="col s4">
                                     <input type="submit" ng-click="createProgram()" value="Create" class="btn"/>
@@ -51,7 +56,7 @@
             </li>
             <li ng-repeat="program in programs track by program.id">
                 <div class="collapsible-header">
-                    <span>{{program.name}} {{$index}}</span>
+                    <span>{{program.name}}</span>
                     <div class="secondary-content">
                         <input type="checkbox" id="editMode{{$index}}" ng-model="editMode[$index]" />
                         <label for="editMode{{$index}}" class="edit-label">Edit</label>
@@ -70,21 +75,25 @@
                                 <input type="text" ng-model="program.officeLocation" required>
                                 <label>Office location</label>
                             </div>
-                            <label for="startDate">Start date</label>
-                            <input input-date
-                                type="text"
-                                name="startDate"
-                                ng-model="program.startDate"
-                                format="<spring:eval expression='@environment.getProperty("jamp.pattern.date").toLowerCase()' />" required/>
-                            <label for="end">End date</label>
-                            <input input-date
-                                type="text"
-                                name="endDate"
-                                ng-model="program.endDate"
-                                format="<spring:eval expression='@environment.getProperty("jamp.pattern.date").toLowerCase()' />" required/>
+                            <div>
+                                <label for="startDate">Start date</label>
+                                <input input-date
+                                    type="text"
+                                    name="startDate"
+                                    ng-model="program.startDate"
+                                    format="<spring:eval expression='@environment.getProperty("jamp.pattern.date").toLowerCase()' />" required/>
+                            </div>
+                            <div>
+                                <label for="end">End date</label>
+                                <input input-date
+                                    type="text"
+                                    name="endDate"
+                                    ng-model="program.endDate"
+                                    format="<spring:eval expression='@environment.getProperty("jamp.pattern.date").toLowerCase()' />" required/>
+                            </div>
                             <div class="row">
                                 <div class="col s4">
-                                    <input type="submit" ng-click="updateProgram(editForm, program, index)" value="Save changes" class="btn"/>
+                                    <input type="submit" ng-click="updateProgram(editForm, program, $index)" value="Save changes" class="btn"/>
                                 </div>
                                 <div class="col s4">
                                     <p class="red-text">{{editErrorMessages[$index]}}</p>
