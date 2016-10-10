@@ -27,7 +27,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @Entity
-public class Person {
+public class Person extends TraceableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

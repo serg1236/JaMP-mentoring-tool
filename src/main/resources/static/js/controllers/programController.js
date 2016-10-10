@@ -31,7 +31,7 @@ app.controller('programCtrl', ['$scope','$http', 'rest', function($scope, $http,
         $scope.editErrorMessages[index] = '';
         if(editForm.$valid) {
             rest.update(item, URL).then(function(data) {
-                item = data;
+                $scope.programs[$scope.programs.indexOf(item)] = data;
                 editForm.$setPristine();
                 Materialize.toast('Updated successfully!', 4000);
             }, function (response) {

@@ -104,6 +104,8 @@
                             <li class="collection-item">Location: <span class="teal-text text-lighten-2 class">{{program.officeLocation}}</span></li>
                             <li class="collection-item">Start date: <span class="teal-text text-lighten-2 class">{{program.startDate}}</span></li>
                             <li class="collection-item">End date: <span class="teal-text text-lighten-2 class">{{program.endDate}}</span></li>
+                            <li class="collection-item">Created by: <span class="teal-text text-lighten-2 class">{{program.createdBy}}</span> at <span class="teal-text text-lighten-2 class">{{program.created}}</span></li>
+                            <li class="collection-item" ng-show="program.lastModified">Last modified by: <span class="teal-text text-lighten-2 class">{{program.lastModifiedBy}}</span> at <span class="teal-text text-lighten-2 class">{{program.lastModified}}</span></li>
                         </ul>
                     </div>
                 </div>

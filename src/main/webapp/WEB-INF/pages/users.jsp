@@ -113,6 +113,8 @@
                             <li class="collection-item">Birth date: <span class="teal-text text-lighten-2 class">{{user.birthDate}}</span></li>
                             <li class="collection-item">Level: <span class="teal-text text-lighten-2 class">{{user.level}}</span></li>
                             <li class="collection-item">Primary skill: <span class="teal-text text-lighten-2 class">{{user.primarySkill}}</span></li>
+                            <li class="collection-item">Created by: <span class="teal-text text-lighten-2 class">{{user.createdBy}}</span> at <span class="teal-text text-lighten-2 class">{{user.created}}</span></li>
+                            <li class="collection-item" ng-show="user.lastModified">Last modified by: <span class="teal-text text-lighten-2 class">{{user.lastModifiedBy}}</span> at <span class="teal-text text-lighten-2 class">{{user.lastModified}}</span></li>
                         </ul>
                     </div>
                 </div>
